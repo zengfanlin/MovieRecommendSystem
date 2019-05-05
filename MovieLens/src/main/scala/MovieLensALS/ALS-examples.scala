@@ -32,7 +32,9 @@ object MovieLensALSexample {
     //Ratings analyst
     val ratingText = spark.sparkContext.textFile(PATH + "ratings.dat")
     //    ratingText.first()
+    //映射成Rating标准格式
     val ratingRDD = ratingText.map(parseRating).cache()
+
     //    println("Total number of ratings: " + ratingRDD.count())
     //    println("Total number of movies rated: " + ratingRDD.map(_.product).distinct().count())
     //    println("Total number of users who rated movies: " + ratingRDD.map(_.user).distinct().count())
@@ -64,6 +66,7 @@ object MovieLensALSexample {
     //    result.show()
 
     //ALS
+    //分割训练集、测试集
     val splits = ratingRDD.randomSplit(Array(0.8, 0.2), 0L)
     val trainingSet = splits(0).cache()
     val testSet = splits(1).cache()
@@ -85,6 +88,8 @@ object MovieLensALSexample {
     //预测只需要一个usersProducts: RDD[(Int, Int)]类型
     val testUserProductPredict = model.predict(testUserProduct)
     //    testUserProductPredict.take(10).mkString("\n")
+
+    //按(user, product)作为key构建map
     val testSetPair = testSet.map {
       case Rating(user, product, rating) => ((user, product), rating)
     }
@@ -93,10 +98,12 @@ object MovieLensALSexample {
     }
     //    根据key（user,product）来join
     val joinTestPredict = testSetPair.join(predictionsPair)
+    //映射出评估结果(user, product), (ratingT:真实值, ratingP:预测值)
     val ratingTP = joinTestPredict.map {
       case ((user, product), (ratingT, ratingP)) =>
         (ratingP, ratingT)
     }
+    //建立回归评估模型
     val evalutor = new RegressionMetrics(ratingTP)
     println(evalutor.meanAbsoluteError) //平均误差
     println(evalutor.rootMeanSquaredError) //均方根误差
