@@ -10,6 +10,7 @@
         <module name="MovieLens" />
         <module name="offlineRecommender" />
         <module name="statisticsRecommender" />
+        <module name="StreamingRecommender" />
       </profile>
     </annotationProcessing>
   </component>
