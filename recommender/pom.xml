@@ -23,35 +23,35 @@
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-core_2.11</artifactId>
-                <version>2.1.1</version>
+                <version>2.4.3</version>
                 <!-- provider如果存在，那么运行时该Jar包不存在，也不会打包到最终的发布版本中，只是编译器有效 -->
                 <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-sql_2.11</artifactId>
-                <version>2.1.1</version>
+                <version>2.4.3</version>
                 <!-- provider如果存在，那么运行时该Jar包不存在，也不会打包到最终的发布版本中，只是编译器有效 -->
                 <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-streaming_2.11</artifactId>
-                <version>2.1.1</version>
+                <version>2.4.3</version>
                 <!-- provider如果存在，那么运行时该Jar包不存在，也不会打包到最终的发布版本中，只是编译器有效 -->
                 <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-mllib_2.11</artifactId>
-                <version>2.1.1</version>
+                <version>2.4.3</version>
                 <!-- provider如果存在，那么运行时该Jar包不存在，也不会打包到最终的发布版本中，只是编译器有效 -->
                 <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-graphx_2.11</artifactId>
-                <version>2.1.1</version>
+                <version>2.4.3</version>
                 <!-- provider如果存在，那么运行时该Jar包不存在，也不会打包到最终的发布版本中，只是编译器有效 -->
                 <!--<scope>provided</scope>-->
             </dependency>
